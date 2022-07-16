@@ -1,0 +1,76 @@
+/*FONT*/
+
+h1,
+.h1 {
+    font-family: 'Poppins';
+    font-weight: 900;
+    font-size: xx-large;
+    letter-spacing: 0.2rem;
+}
+
+h2 {
+    font-family: 'Poppins';
+    font-weight: 900;
+    letter-spacing: 0.1rem;
+}
+
+h3 {
+    font-family: 'Poppins';
+    font-weight: 700;
+}
+
+h5 {
+    font-family: Poppins;
+    font-weight: 900;
+}
+
+p,
+label {
+    font-family: 'Poppins';
+}
+
+.navbar-nav>li {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*
+nav {
+    border-bottom-style: solid;
+    border-color: goldenrod;
+}*/
+
+/*ALIGNMENT*/
+.adjust {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*PROPERTIES*/
+
+.rounded-max{
+    border-radius: 30px;
+}
+/*COLOR*/
+
+.bg-1,
+.btn-1 {
+    background-color: rgb(29, 33, 138);
+
+}
+
+.border-1 {
+    border-radius: 15px;
+    border-color: rgb(29, 33, 138);
+}
+
+.bg-2,
+.btn-2 {
+    background-color: rgb(4, 9, 154);
+}
+
+.bg-grey {
+    background-color: rgb(223, 223, 223);
+}
+
