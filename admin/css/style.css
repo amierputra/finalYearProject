@@ -1,0 +1,94 @@
+/* font */
+.h1 {
+    font-family: Montserrat;
+    font-weight: 800;
+}
+
+h2 {
+    font-family: Poppins;
+    font-weight: 800;
+}
+
+h3 {
+    font-family: Poppins;
+    font-weight: 500;
+}
+
+h4{
+    font-family: Poppins;
+    font-weight: 500;
+}
+
+h5{
+    font-family: Poppins;
+    font-weight: 500;
+}
+
+p{
+    font-family: Poppins;
+}
+
+/* color */
+.bg-lightblue {
+    background-color: #e3f2fd;
+}
+
+.bg-lightyellow {
+    background-color: #ffff66;
+}
+
+.bg-violet{
+    background-color: violet;
+}
+
+
+/* button */
+
+
+/* allignment */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center2 {
+    display: flex;
+    justify-content: center;
+}
+
+center3{
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-nav>li {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* special */
+
+.round-corner {
+    border-radius: 15px;
+}
+
+table {
+    border: 2px solid #007bff;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #bfbfbf}
+tr:nth-child(odd){background-color: white}
+
+th {
+    background-color: #007bff;
+    color: black;
+}
