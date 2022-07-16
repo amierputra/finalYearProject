@@ -25,8 +25,19 @@ $stmt->execute();
 $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $rows = $stmt->fetchAll();
 
-?>
+$sqlquery2 = "SELECT * FROM users";
+$stmt = $conn->prepare($sqlquery2);
+$stmt->execute();
+$result2 = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+$rows2 = $stmt->fetchAll();
 
+$sqlquery3 = "SELECT * FROM quota";
+$stmt = $conn->prepare($sqlquery3);
+$stmt->execute();
+$result3 = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+$rows3 = $stmt->fetchAll();
+?>
+?>
 
 <!DOCTYPE html>
 <html lang="ms">
@@ -43,7 +54,7 @@ $rows = $stmt->fetchAll();
     <script src="../jscript/script.js"></script>
 
     <link rel="icon" type="image/x-icon" href="../images/logouum.png">
-    <title>Halaman Utama</title>
+    <title>Slot</title>
 </head>
 
 <body>
@@ -64,10 +75,10 @@ $rows = $stmt->fetchAll();
 
                 <ul class="navbar-nav mb-2 mt-2 ms-auto mb-lg-0 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-white active fw-bold" aria-current="page" href="home.php">Utama</a>
+                        <a class="nav-link text-white" href="home.php">Utama</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="slot.php">Slot</a>
+                        <a class="nav-link text-white active fw-bold" aria-current="page" href="slot.php">Slot</a>
                     </li>
                     <!-- Navbar dropdown -->
                     <li class="nav-item dropdown">
@@ -81,6 +92,7 @@ $rows = $stmt->fetchAll();
                             $inasis = $user['userinasis'];
                             $school = $user['userschool'];
                             $birthday = $user['userbirth'];
+                            
 
                             echo "<a class='nav-link dropdown-toggle text-white' href='#' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                             <img src='../images/profiles/$id.jpg' alt='Avatar Logo' style='height:30px;' class='rounded-pill'>
@@ -124,38 +136,53 @@ $rows = $stmt->fetchAll();
             </div>
         </div>
     </nav>
+    
+    <div class="p-5"></div>
+    
+    <div class="container-fluid p-4 py-5">
+        <h2 class='text-uppercase'>Slot Solat Jumaat</h2>
 
-    <div class="container-fluid">
-        <div class="row flex-nowrap">
-            <div class="py-5 px-md-5 bg-light" id="main">
-                <div class="pt-5">
-                    <h3>Selamat Datang</h3>
-                    <?php echo "<h6>$userfname</h6>" ?>
-
-                </div>
-                <hr style="height:2px">
-                <div class="mt-4 p-5 bg-grey bg-gradient text-center rounded-max">
-                    <h2 class="text-primary text-uppercase">Kewajipan Solat Lima Waktu</h2> <br>
-                    <p class="text-black" style="font-style:italic">“Dan dirikanlah kamu akan sembahyang dan keluarkanlah zakat, dan rukuklah kamu semua (berjemaah) bersama-sama orang-orang yang rukuk.”</p>
-                    <p class="text-black" style="font-style:italic">"Establish prayer, pay alms-tax, and bow down with those who bow down."</p>
-                </div>
-                <div class="mt-4 p-5 bg-light text-center rounded-max">
-                    <h2 class="text-primary text-uppercase">Kepentingan</h2> <br>
-                    <p style="font-style:italic">Abu Hurairah RA meriwayatkan beliau mendengar Rasulullah SAW bersabda: "Andai kata di hadapan pintu seseorang di antara kamu ada sebuah sungai dan dia mandi di situ sebanyak lima kali dalam sehari, apakah masih ada kekotoran tertinggal di badannya?" Sahabat menjawab: "Tidak ada kekotoran sedikitpun tertinggal di badannya."
-                        Baginda bersabda: "Demikianlah bandingan solat lima waktu, dengan mengerjakan semua itu Allah akan menghapuskan semua dosanya dan kesalahan."<br> (Hadis riwayat Bukhari dan Muslim)</p>
-                </div>
-            </div>
-
+        <div class="pt-5">
+            <table class="table table-striped table-bordered border-primary center" style="width:100%;">
+                <thead>
+                    <tr class="table-dark">
+                        <th>Nama</th>
+                        <th>Tarikh 1</th>
+                        <th>Tarikh 2</th>
+                        <th>Tarikh 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                foreach ($rows2 as $user) {
+                    $id = $user['id'];
+                    $email = $user['useremail'];
+                    $name = $user['username'];
+                    $fname = $user['userfname'];
+                    $matricno = $user['usermatricno'];
+                    $inasis = $user['userinasis'];
+                    $school = $user['userschool'];
+                    $usertel = $user['usertelno'];
+                    $birthday = $user['userbirth'];
+                    $date = $user['date'];
+                    $date2 = $user['date2'];
+                    $date3 = $user['date3'];
+                    
+                    echo "
+                        <tr>
+                            <td style='text-align: left;'>$fname</td>
+                            <td>$date</td>
+                            <td>$date2</td>
+                            <td>$date3</td>
+                        </tr>          
+                    ";
+                }
+                ?>
+                </tbody>
+            </table>
         </div>
     </div>
-    <footer id="footer" class="container-fluid pt-3 pb-1 text-center text-white adjust bg-1 bg-gradient" style="position:relative;">
-        <p>
-            &copy; Developed by
-            <a href="https://amputra.com" class="text-warning" style="text-decoration:none;">Amier Putra</a>
-            | All Rights Reserved | Version Release: v1.0
-        </p>
-    </footer>
+    
     <script src="../jscript/switch.js"></script>
 </body>
-
 </html>

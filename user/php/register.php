@@ -1,4 +1,12 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '/home/amierputra/public_html/PHPMailer/src/Exception.php';
+require '/home/amierputra/public_html/PHPMailer/src/PHPMailer.php';
+require '/home/amierputra/public_html/PHPMailer/src/SMTP.php';
+
 error_reporting(0);
 
 if (isset($_POST['submit'])) {
@@ -7,21 +15,20 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $pass = sha1($_POST['password']);
     $cpass = sha1($_POST['cpassword']);
-    //$otp = rand(10000, 99999);
+    $otp = rand(10000, 99999);
 
     if ($pass == $cpass) {
-        $sqlregister = "INSERT INTO users (username, useremail, userpass) VALUES ('$name', '$email', '$pass')";
+        $sqlregister = "INSERT INTO users (username, useremail, userpass, userotp) VALUES ('$name', '$email', '$pass', '$otp')";
 
         try {
             $result = $conn->exec($sqlregister);
-            //sendMail($email, $otp);
+            sendMail($email, $otp);
             if ($result) {
-                echo "<script>alert('Sila lihat email anda.')</script>";
                 $user = "";
                 $email = "";
                 $_POST['password'] = "";
                 $_POST['cpassword'] = "";
-                echo "<script>window.location.replace('login.php')</script>";
+                echo "<script>window.location.replace('checkemail.php')</script>";
             }
         } catch (PDOException $e) {
             echo "<script>alert('Pendaftaran gagal.')</script>";
@@ -30,6 +37,33 @@ if (isset($_POST['submit'])) {
     } else {
         echo "<script>alert('Kata laluan tidak sepadan.')</script>";
     }
+}
+
+function sendMail($email, $otp)
+{
+    $mail = new PHPMailer(true);
+    $mail->SMTPDebug = 0;
+    $mail->isSMTP();
+    $mail->Host       = 'mail.amputra.com';         //mail server
+    $mail->SMTPAuth   = true;
+    $mail->Username   = '';         //email username
+    $mail->Password   = '';         //email password
+    $mail->SMTPSecure = 'tls';
+    $mail->Port       = 587;
+    $from = "admin_msbuum@amputra.com";                     //email
+    $to = $email;
+    $subject = 'MASJID SULTAN BADLISHAH UUM - Sahkan akaun anda';
+    $message = "<h2>Selamat Datang ke sistem MSBUUM.</h2> <p>Terima kasih kerana mendaftar. Untuk melengkapkan pendaftaran, sila klik butang di bawah.<p>
+    <p><button><a href ='https://msb.amputra.com/php/verifyacc.php?email=$email&otp=$otp'>Sahkan akaun</a></button>";
+
+    $mail->setFrom($from, "MSBUUM");
+    $mail->addAddress($to);                                             //Add a recipient
+
+    //Content
+    $mail->isHTML(true);                                                //Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+    $mail->send();
 }
 ?>
 

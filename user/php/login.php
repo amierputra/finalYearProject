@@ -22,7 +22,6 @@ if (isset($_POST['submit'])) {
             $userbirth = $user['userbirth'];
         }
         session_start();
-        
         $_SESSION['sessionid'] = session_id();
         $_SESSION['id'] = $userid;
         $_SESSION['email'] = $useremail;

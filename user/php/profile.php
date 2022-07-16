@@ -70,7 +70,7 @@ if (isset($_POST['logout'])) {
                         <a class="nav-link text-white" aria-current="page" href="home.php">Utama</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Slot</a>
+                        <a class="nav-link text-white" href="slot.php">Slot</a>
                     </li>
                     <!-- Navbar dropdown -->
                     <li class="nav-item dropdown">
@@ -149,7 +149,7 @@ if (isset($_POST['logout'])) {
 
                 echo "
                                         
-                <table style='width:100%'>
+                <table class='table table-striped' style='width:100%'>
                     <tr>
                         <td class='text-uppercase'><b>Nama Akaun</b></td>
                         <td><b>:</b></td>
@@ -184,6 +184,11 @@ if (isset($_POST['logout'])) {
                         <td class='text-uppercase'><b>No. telefon</b></td>
                         <td><b>:</b></td>
                         <td>$usertel</td>
+                    </tr>
+                    <tr>
+                        <td class='text-uppercase'><b>Tarikh Lahir</b></td>
+                        <td><b>:</b></td>
+                        <td>$birthday</td>
                     </tr>
                 </table>
                                         

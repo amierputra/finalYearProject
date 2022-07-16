@@ -29,18 +29,15 @@ label {
     font-family: 'Poppins';
 }
 
-.navbar-nav>li {
-    padding-left: 10px;
-    padding-right: 10px;
-}
 
-/*
-nav {
-    border-bottom-style: solid;
-    border-color: goldenrod;
-}*/
 
 /*ALIGNMENT*/
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 .adjust {
     display: flex;
     justify-content: center;
@@ -52,6 +49,24 @@ nav {
 .rounded-max{
     border-radius: 30px;
 }
+
+.navbar-nav>li {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+tr {
+  height: 40px;
+}
+
+
+/*
+nav {
+    border-bottom-style: solid;
+    border-color: goldenrod;
+}*/
+
+
 /*COLOR*/
 
 .bg-1,

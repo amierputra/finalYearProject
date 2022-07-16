@@ -46,11 +46,12 @@ if (isset($_POST['submit'])) {
     $uinasis = $_POST['uinasis'];
     $uschool = $_POST['uschool'];
     $utel = $_POST['utel'];
+    $ubirthday = $_POST['birthday'];
 
-    $sqlinsert = "UPDATE `users` SET username='$uname', userfname='$ufname', usermatricno='$umatricno', userinasis='$uinasis', userschool='$uschool', usertel='$utel' WHERE useremail='$useremail'";
+    $sqlinsert = "UPDATE `users` SET username='$uname', userfname='$ufname', usermatricno='$umatricno', userinasis='$uinasis', userschool='$uschool', usertelno='$utel', userbirth='$ubirthday' WHERE useremail='$useremail'";
     try {
         $conn->exec($sqlinsert);
-        echo "<script>alert('Butiran berjaya disimpan.')</script>";
+        //echo "<script>alert('Butiran berjaya disimpan.')</script>";
         //echo "<script>window.location.replace('pass.php')</script>";
         include 'pass.php';
     } catch (PDOException $e) {
@@ -209,6 +210,11 @@ if (isset($_POST['logout'])) {
                 <input type="tel" id="utel" name="utel" placeholder="Contoh: 012-3456789" pattern="[0-9]{3}-[0-9]{7-8}" value="<?php echo $tel; ?>" class="form-control" />
             </div>
 
+            <div class="form-outline mb-4">
+                <label class="form-label" for="birthday">Tarikh Lahir</label>
+                <input type="date" id="birthday" name="birthday"value="<?php echo $birthday; ?>" class="form-control" />
+            </div>
+            
             <div class="d-grid">
                 <button type="submit" name="submit" class="btn btn-warning btn-block fw-bold text-body">Simpan</button>
             </div>
